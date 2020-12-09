@@ -138,11 +138,23 @@ void change_color(String cmd)
 
   if (cmd.substring(0, 1) == "R")
   {
-    long long number = strtoll( &cmd[1], NULL, 16);
-    // Split them up into r, g, b values
-    long long R = number >> 16;
-    long long G = number >> 8 & 0xFF;
-    long long B = number & 0xFF;
+    //version 5 convert decimal to hex
+//     long long number = strtoll( &cmd[1], NULL, 16);
+//     // Split them up into r, g, b values
+//     long long R = number >> 16;
+//     long long G = number >> 8 & 0xFF;
+//     long long B = number & 0xFF;
+//     apply_color(R, G, B);
+    
+    //version 6 convert decimal to char
+     char  *char_cmd = &cmd[0]; // assign char dau tien cua string vao con tro char
+  
+  if (char_cmd[0] == '#')
+  {
+     int R = (int) char_cmd[1] *255/100;
+     int G = (int) char_cmd[2] *255/100;
+     int B = (int) char_cmd[3]  *255/100;
+
     apply_color(R, G, B);
   }
   else
