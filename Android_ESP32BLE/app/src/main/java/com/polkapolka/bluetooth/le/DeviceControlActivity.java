@@ -280,7 +280,8 @@ public class DeviceControlActivity extends Activity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
-                RGBFrame[pos]=progress;
+                //RGBFrame[pos]=progress;
+                  RGBFrame[pos]=progress*100/255; //convert to char
             }
 
             @Override
