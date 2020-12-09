@@ -316,3 +316,4 @@ public class DeviceControlActivity extends Activity {
 
 
 }
+// update lan 1
