@@ -297,15 +297,23 @@ public class DeviceControlActivity extends Activity {
     }
     // on change of bars write char 
     private void makeChange() {
-        int red = RGBFrame[0];
-        int green = RGBFrame[1];
-        int blue = RGBFrame[2];
-        String hex = String.format("%02x%02x%02x",red,green,blue);
+            //covert decimal to hexa version 5
+//         int red = RGBFrame[0];
+//         int green = RGBFrame[1];
+//         int blue = RGBFrame[2];
+//         String hex = String.format("%02x%02x%02x",red,green,blue);
+//         String hexfinal="R"+hex;
+             //Log.d(TAG, "Sending result=" + hexfinal);
+             //final byte[] tx = hexfinal.getBytes();
+            
+            // convert decimal to char version 6
+            char red = (char) RGBFrame[0];
+            char green = (char) RGBFrame[1];
+            char blue = (char) RGBFrame[2];
+            String hex = "#"+red+green+blue;
+            final byte[] tx = hex.getBytes();
+        
 
-
-        String hexfinal="R"+hex;
-        Log.d(TAG, "Sending result=" + hexfinal);
-        final byte[] tx = hexfinal.getBytes();
         Log.d(TAG, "Size of tx=" + tx.length);
         if(mConnected) {
             characteristicTX.setValue(tx);
@@ -313,7 +321,4 @@ public class DeviceControlActivity extends Activity {
             //mBluetoothLeService.setCharacteristicNotification(characteristicRX,true);
         }
     }
-
-
 }
-// update lan 1
