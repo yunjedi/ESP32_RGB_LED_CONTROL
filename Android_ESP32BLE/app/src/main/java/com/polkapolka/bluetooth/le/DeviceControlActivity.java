@@ -296,6 +296,27 @@ public class DeviceControlActivity extends Activity {
             }
         });
     }
+         //Switch ON or OFF Blink
+    public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+        char c1;
+        if(isChecked) {
+            list_toggle.setText("ON");  //To change the text near to switch
+             c1 = '1';
+            Log.d("You are :", "Checked");
+        }
+        else {
+            list_toggle.setText("OFF");   //To change the text near to switch
+             c1 = '0';
+            Log.d("You are :", " Not Checked");
+        }
+        String sw1 = "#"+c1;
+        final byte[] tx = sw1.getBytes();
+        if(mConnected) {
+            characteristicTX.setValue(tx);
+            mBluetoothLeService.writeCharacteristic(characteristicTX);
+            //mBluetoothLeService.setCharacteristicNotification(characteristicRX,true);
+        }
+    }
     // on change of bars write char 
     private void makeChange() {
             //covert decimal to hexa version 5
